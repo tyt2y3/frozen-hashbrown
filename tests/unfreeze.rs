@@ -59,6 +59,26 @@ fn unfreeze_str() -> Result<()> {
 }
 
 #[test]
+fn unfreeze_large_set() -> Result<()> {
+    let map: HashMap<i32, ()> = (1..=10_000).map(|v| (v, ())).collect();
+
+    let frozen = FrozenHashMap::construct(&map);
+    std::mem::drop(map);
+    println!("{frozen:?}");
+    let frozen: Vec<u8> = frozen.store();
+
+    let mut unfrozen = FrozenHashMap::load(&frozen).context("Failed to load")?;
+    let unfrozen = unfrozen
+        .reconstruct::<i32, ()>()
+        .context("Failed to reconstruct")?;
+
+    let sum: i32 = unfrozen.iter().map(|(v, _)| *v).sum();
+    assert_eq!(sum, 10000 * 10001 / 2);
+
+    Ok(())
+}
+
+#[test]
 fn unfreeze_u128() -> Result<()> {
     let map: HashMap<u32, u128> = [
         (111, 111_111_111),
@@ -78,7 +98,7 @@ fn unfreeze_u128() -> Result<()> {
 
     let mut unfrozen = FrozenHashMap::load(&frozen).context("Failed to load")?;
     let unfrozen = unfrozen
-        .reconstruct::<u128, u128>()
+        .reconstruct::<u32, u128>()
         .context("Failed to reconstruct")?;
     let unfrozen_snapshot = format!("{unfrozen:?}");
     assert_eq!(snapshot, unfrozen_snapshot);
