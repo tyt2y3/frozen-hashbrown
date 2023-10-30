@@ -59,7 +59,7 @@ let unfrozen_snapshot = format!("{unfrozen:?}");
 assert_eq!(snapshot, unfrozen_snapshot);
 ```
 
-More examples in https://github.com/SeaQL/frozen-hashbrown/blob/main/frozen-hashbrown/tests/unfreeze.rs
+More examples under https://github.com/tyt2y3/frozen-hashbrown/blob/main/tests/unfreeze.rs
 
 ##
 
