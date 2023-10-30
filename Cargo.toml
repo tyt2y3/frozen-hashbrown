@@ -1,0 +1,15 @@
+[package]
+name = "frozen-hashbrown"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Frozen version of Rust standard library's hashbrown"
+rust-version = "1.72"
+authors = ["Chris Tsang <chris.2y3@outlook.com>"]
+repository = "https://github.com/tyt2y3/frozen-hashbrown"
+
+[dependencies]
+cfg-if = { version = "1" }
+
+[dev-dependencies]
+anyhow = { version = "1" }
