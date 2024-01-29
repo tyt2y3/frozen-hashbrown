@@ -1,5 +1,7 @@
 //! Frozen version of Rust standard library's [hashbrown](https://github.com/rust-lang/hashbrown).
 //!
+//! <img src="https://raw.githubusercontent.com/tyt2y3/frozen-hashbrown/main/frozen-hashbrown.png" width="400"/>
+//!
 //! # What is this about
 //!
 //! 1. Allow you to dump the memory of a `std::collections::HashMap` into a blob
@@ -7,6 +9,8 @@
 //! 3. Such that we can iterate through the data!
 //!
 //! # What is this for
+//!
+//! It allows one process to look into another process's `HashMap` if the memory is mapped
 //!
 //! 1. It's used in [FireDBG](https://firedbg.sea-ql.org/) to allow us to capture and render `HashMap`
 //! 2. It could also probably allow us to extract `HashMap` from `coredump`
