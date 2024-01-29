@@ -10,7 +10,7 @@ Frozen version of Rust standard library's [hashbrown](https://github.com/rust-la
 
 ## What is this for
 
-1. It's used in FireDBG to allow us to capture and render `HashMap`
+1. It's used in [FireDBG](https://firedbg.sea-ql.org/) to allow us to capture and render `HashMap`
 2. It could also probably allow us to extract `HashMap` from `coredump`
 
 ## How it works
